@@ -1,4 +1,5 @@
-require('./bootstrap');
+// @ts-disable
+import './bootstrap';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
@@ -9,7 +10,7 @@ const appName = window.document.getElementsByTagName('title')[0]?.innerText || '
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) => require(`./Pages/${name}.vue`),
-    setup({ el, app, props, plugin }) {
+    setup({ el, app, props, plugin }):any {
         return createApp({ render: () => h(app, props) })
             .use(plugin)
             .mixin({ methods: { route } })
@@ -17,4 +18,8 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563' });
+InertiaProgress.init({
+    color: '#4B5563',
+    includeCSS: true,
+    showSpinner: true,
+});

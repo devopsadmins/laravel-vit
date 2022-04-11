@@ -45,6 +45,7 @@ const logout = () => {
                                 <Link :href="route('dashboard')">
                                     <JetApplicationMark class="block h-9 w-auto" />
                                 </Link>
+
                             </div>
 
                             <!-- Navigation Links -->
@@ -52,11 +53,15 @@ const logout = () => {
                                 <JetNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </JetNavLink>
+                                <JetNavLink :href="route('teste')" :active="route().current('teste')">
+                                    Teste
+                                </JetNavLink>
                             </div>
                         </div>
 
                         <div class="hidden sm:flex sm:items-center sm:ml-6">
                             <div class="ml-3 relative">
+
                                 <!-- Teams Dropdown -->
                                 <JetDropdown v-if="$page.props.jetstream.hasTeamFeatures" align="right" width="60">
                                     <template #trigger>

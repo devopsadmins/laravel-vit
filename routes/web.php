@@ -1,5 +1,7 @@
 <?php
+declare(strict_types=1);
 
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -23,7 +25,10 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
-
+Route::get("/teste", function () {
+    $users = User::find(1)->get();
+    return Inertia::render('MyPage',['users'=>$users]);
+})->name('teste');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
